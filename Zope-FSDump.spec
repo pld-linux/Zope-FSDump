@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 %define		zope_subname	FSDump
 Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" filesystem equivalents
 Summary(pl):	Pakiet umo¿liwiaj±cy "zrzut" obiektów z Zope
