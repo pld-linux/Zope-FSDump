@@ -3,7 +3,7 @@ Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" file
 Summary(pl):	Pakiet umo¿liwiaj±cy "zrzut" obiektów z Zope
 Name:		Zope-%{zope_subname}
 Version:	0.8.1
-Release:	1
+Release:	2
 License:	ZPL 2.0
 Group:		Development/Tools
 Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{zope_subname}-%{version}/%{zope_subname}-%{version}.tar.gz
