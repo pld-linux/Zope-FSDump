@@ -10,6 +10,7 @@ Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{zope_subname}-%{versi
 # Source0-md5:	e9e57e1704387e4de022db7d6011abfb
 URL:		http://zope.org/Members/tseaver/FSDump/
 Requires(post,postun):	/usr/sbin/installzopeproduct
+BuildRequires:  python
 %pyrequires_eq	python-modules
 Requires:	Zope
 BuildArch:	noarch
