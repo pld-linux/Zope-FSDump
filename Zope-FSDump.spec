@@ -1,0 +1,61 @@
+%include	/usr/lib/rpm/macros.python
+%define		zope_subname	FSDump
+Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" filesystem equivalents
+Summary(pl):	Umo¿liwia "zrzut" objektów z Zope
+Name:		Zope-%{zope_subname}
+Version:	0.7
+Release:	1
+License:	ZPL 2.0
+Group:		Development/Tools
+Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{version}/%{zope_subname}-%{version}.tar.gz
+# Source0-md5:	a7ad85b5752c7c8bfc58bcdaef10d894
+URL:		http://zope.org/Members/tseaver/FSDump/
+%pyrequires_eq	python-modules
+Requires:	Zope
+Requires(post,postun):	/usr/sbin/installzopeproduct
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+FSDump exports through-the-web objects (folders, DTML, etc.) 
+as "natural" filesystem equivalents.
+
+%description -l pl
+FSDump umo¿liwia "zrzut" objektów z Zope.
+
+%prep
+%setup -q -n %{zope_subname}-%{version}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+cp -af {help,interfaces,www,*.py,version.txt} \
+	$RPM_BUILD_ROOT%{_datadir}/%{name}
+
+%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
+%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+# find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+/usr/sbin/installzopeproduct %{_datadir}/%{name} %{zope_subname}
+if [ -f /var/lock/subsys/zope ]; then
+	/etc/rc.d/init.d/zope restart >&2
+fi
+
+%postun
+if [ "$1" = "0" ]; then
+	/usr/sbin/installzopeproduct -d %{zope_subname}
+	if [ -f /var/lock/subsys/zope ]; then
+		/etc/rc.d/init.d/zope restart >&2
+	fi
+fi
+
+%files
+%defattr(644,root,root,755)
+%doc CHANGES.txt README.txt TODO.txt
+%{_datadir}/%{name}
