@@ -2,12 +2,12 @@
 Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" filesystem equivalents
 Summary(pl):	Pakiet umo¿liwiaj±cy "zrzut" obiektów z Zope
 Name:		Zope-%{zope_subname}
-Version:	0.8
+Version:	0.8.1
 Release:	1
 License:	ZPL 2.0
 Group:		Development/Tools
 Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{zope_subname}-%{version}/%{zope_subname}-%{version}.tar.gz
-# Source0-md5:	7e2956c676ff2586fbe530ab4d58361a
+# Source0-md5:	e9e57e1704387e4de022db7d6011abfb
 URL:		http://zope.org/Members/tseaver/FSDump/
 Requires(post,postun):	/usr/sbin/installzopeproduct
 %pyrequires_eq	python-modules
@@ -29,7 +29,7 @@ FSDump umo¿liwia "zrzut" obiektów z Zope.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-cp -af {help,interfaces,www,*.py,version.txt} \
+cp -af FSDump/{help,interfaces,www,*.py,version.txt} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -56,5 +56,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.txt README.txt TODO.txt
+%doc FSDump/{CHANGES.txt,INSTALL.txt,README.txt,TODO.txt}
 %{_datadir}/%{name}
