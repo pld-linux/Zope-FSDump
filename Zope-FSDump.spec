@@ -1,7 +1,7 @@
 %include	/usr/lib/rpm/macros.python
 %define		zope_subname	FSDump
 Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" filesystem equivalents
-Summary(pl):	Umo¿liwia "zrzut" objektów z Zope
+Summary(pl):	Pakiet umo¿liwiaj±cy "zrzut" obiektów z Zope
 Name:		Zope-%{zope_subname}
 Version:	0.7
 Release:	1
@@ -10,9 +10,9 @@ Group:		Development/Tools
 Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{version}/%{zope_subname}-%{version}.tar.gz
 # Source0-md5:	a7ad85b5752c7c8bfc58bcdaef10d894
 URL:		http://zope.org/Members/tseaver/FSDump/
+Requires(post,postun):	/usr/sbin/installzopeproduct
 %pyrequires_eq	python-modules
 Requires:	Zope
-Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,7 +21,7 @@ FSDump exports through-the-web objects (folders, DTML, etc.)
 as "natural" filesystem equivalents.
 
 %description -l pl
-FSDump umo¿liwia "zrzut" objektów z Zope.
+FSDump umo¿liwia "zrzut" obiektów z Zope.
 
 %prep
 %setup -q -n %{zope_subname}-%{version}
