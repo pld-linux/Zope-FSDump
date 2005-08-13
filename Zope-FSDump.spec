@@ -2,12 +2,12 @@
 Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" filesystem equivalents
 Summary(pl):	Pakiet umo¿liwiaj±cy "zrzut" obiektów z Zope
 Name:		Zope-%{zope_subname}
-Version:	0.9
+Version:	0.9.2
 Release:	1
 License:	ZPL 2.0
 Group:		Development/Tools
 Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{zope_subname}-%{version}/%{zope_subname}-%{version}.tar.gz
-# Source0-md5:	2aa2c28939c88c6e2b82c8aecdf6c6b8
+# Source0-md5:	c8bb0b5fa3e04bfe1dfa811271e37871
 URL:		http://zope.org/Members/tseaver/FSDump/
 Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildRequires:	python
