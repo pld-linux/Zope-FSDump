@@ -9,16 +9,17 @@ Group:		Development/Tools
 Source0:	http://zope.org/Members/tseaver/%{zope_subname}/%{zope_subname}-%{version}/%{zope_subname}-%{version}.tar.gz
 # Source0-md5:	c8bb0b5fa3e04bfe1dfa811271e37871
 URL:		http://zope.org/Members/tseaver/FSDump/
-Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildRequires:	python
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires(post,postun):	/usr/sbin/installzopeproduct
 %pyrequires_eq	python-modules
 Requires:	Zope
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-FSDump exports through-the-web objects (folders, DTML, etc.) 
-as "natural" filesystem equivalents.
+FSDump exports through-the-web objects (folders, DTML, etc.) as
+"natural" filesystem equivalents.
 
 %description -l pl
 FSDump umo¿liwia "zrzut" obiektów z Zope.
@@ -43,16 +44,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/sbin/installzopeproduct %{_datadir}/%{name} %{zope_subname}
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
-fi
+%service -q zope restart
 
 %postun
 if [ "$1" = "0" ]; then
 	/usr/sbin/installzopeproduct -d %{zope_subname}
-	if [ -f /var/lock/subsys/zope ]; then
-		/etc/rc.d/init.d/zope restart >&2
-	fi
+	%service -q zope restart
 fi
 
 %files
