@@ -1,6 +1,6 @@
 %define		zope_subname	FSDump
 Summary:	Exports through-the-web objects (folders, DTML, etc.) as "natural" filesystem equivalents
-Summary(pl.UTF-8):   Pakiet umożliwiający "zrzut" obiektów z Zope
+Summary(pl.UTF-8):	Pakiet umożliwiający "zrzut" obiektów z Zope
 Name:		Zope-%{zope_subname}
 Version:	0.9.2
 Release:	1
